@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "aurora-292021",
+  "private_key_id": "5b660df576213235dc86215381f3d8a1e9830f14",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC0NPWich0mOXlT\nRv/dt7vajQHvZGL9s3Ys6na1dx6Hf8i+LRngb1sEXkxNZ73qBZLF4I9+i9Bv8fxq\no18d1P58+kCPODEaSskbVt6nMCgQMMZxplDkhWQIBU2b/smoNblO0YmiEshDg5Fx\nAButVsxKnw0TMryMV09tp39Ylc+ZOkBCvrVB/3cq4tDjqXbxhRuqMkEYQ583MFNG\n322sPDVBn0Wt6Knz9jV5WJi496YpNXyDZorY+hzYGVvQPSSWPhEfHaEYB41jDR7y\nqQjyOfxgGDP0RSxnFsm9irvfuoFC1qg6ysOcltnXoNDJIgawDxjmqA02aG6UvVDZ\nYBRai/nNAgMBAAECggEAEureVbvKAJRsU/Lc8wm8hYsORshl4JaBfjdCLUxAdF6p\n6audZE38TYntU6Y42G4rrsHN/oMEkhk383qMBnsww1jtWbuUjVsyympvpuMWHuun\n4WVhZ46d5ij8W+G+31LTIwmPJmhMr/20pm/+987n/6C7xCYBh3ALorTAgxb9perm\nJ/WM9tzk7MNuRTCQHIheovet6dqY0a6K1YSH8nH93/wl5Clo6ZO5rP4tWdTUXoyd\n4M8zUnC/2ZGlL599guVRAKEyMbtNJNfdgYpueImlRNmmcYoCedKyy9BoSzEydMzh\ncSTxyDwOb6i/8xZIGcWvSp3GiQ+mgbQgU7uPdBpfNwKBgQDnMvRzHY0gwWtGLPha\nCHjG0SbaGTez0uJYtwVppQYmHO1h37QRAv6GtsG2mACCIbpCHNpfqPozttEqk8bR\nzKotZzLo3+MbyN+2lk4bSK9jPB5gt+tv8Fh4uVtXtkoRtEtNrgbzV/yVFOOqvmh/\nZZMKIWgC6JGy/PxRAgVRnGYd5wKBgQDHibBv9SIG9/GqG74Lb8S2z0vOIrGMTzL9\nBZI1IlVfPTpbUCnNv87F5ZD11mOxrKOtpkeMVo2PIakVnCqe1KkMHLMUC1wrsPl3\nw1liOwdqJOpUHMkeQJVsmd40/O+m5QoR+5sdUUQrlHk0dfGKnPG2yC/w8fdR+In1\nSPSMvQzsKwKBgFLBGGKD91n8IYuy2QpQ8fooLwHt+NQy7bXXfOZ9nR/TRty7l9Zm\n/ff2Pow/CB+MNwEnFrsa3sPX8jKNRqMd4OPzhnN4f/AYDItsbXSypaSdhjoUWv9s\nRh6gKiPRKd4AbNvXKMG9grlSCtO45+qBzwnXP0WbPVuV1jKgyIqXsq2NAoGBAL63\nrBxWgJ+IfUPKIGtt+OeCW0I7hthFGsccfBKtLkxJiW2dwVcW7dvZACT5NXCtQgTH\n2bsZP1R/J82v5kzJlootJD0UXpSkIs2FuflZ0kxx3Edo/BIeSLP0nZ6n46fxYx6t\nDiWHd1DwKKkr0iJav+2kia4SmAGRPMtlX9jlGWThAoGBAIXT0W94Nz96qJ6NEp83\n208QDhyYcZYW34CnuSgWxFd7sxmXftW1N/a4gGnHRoTkZyVMx0eD50xepZoQzqpT\nj0ap7jeVHbvyLOKmd6sMAqsNI7F8oOypLsqsnSKhukvLUMs9d9UMh6CYhagHzBWM\nAM9A+5TxeAAeq1PKTDZakCEP\n-----END PRIVATE KEY-----\n",
+  "client_email": "emporio-serrana-firestore@aurora-292021.iam.gserviceaccount.com",
+  "client_id": "106529808203820433221",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/emporio-serrana-firestore%40aurora-292021.iam.gserviceaccount.com"
+}
