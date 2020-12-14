@@ -19,7 +19,7 @@ class Auth:
 
         if user_data:
             if password_hash == user_data['password_hash']:
-                payload = {'username': username, 'exp': exp}
+                payload = {'username': username, 'sub': 'emporioserrana.com.br', 'exp': exp}
                 token = self.generate_token(payload)
                 res = {'status': 200, 'message':'Login successful', 'token': token}
             else:
