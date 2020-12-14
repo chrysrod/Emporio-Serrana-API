@@ -16,8 +16,7 @@ def login():
 def logout():
 
     res = {
-        'status': 200,
-        'endpoint': '/logout'
+        'status': 200
     }
 
     return jsonify(res)
