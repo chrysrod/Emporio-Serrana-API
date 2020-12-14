@@ -9,7 +9,15 @@ class Firestore:
         firebase_admin.initialize_app(cred)
         self.db = firestore.client()
 
-    def get_users(self):
+    def get_user_data(self, username):
+        collection = 'users'
+        document = username
+        
+        res = self.db.collection(collection).document(document).get().to_dict()
+
+        return res
+
+    def get_all_users(self):
         collection = 'users'
         
         docs = self.db.collection(collection).stream()
