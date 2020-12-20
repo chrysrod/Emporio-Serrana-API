@@ -84,3 +84,19 @@ def delete_sale(user_data):
     response = Sales().delete_sale(sale_id)
 
     return make_response(jsonify(response), 200)
+
+@sales_bp.route('/api/sales/get_percentages', methods=['GET'])
+@token_required
+def get_percentages(user_data):
+
+    response = Sales().get_percentages()
+
+    return make_response(jsonify(response), 200)
+
+@sales_bp.route('/api/sales/get_earnings', methods=['GET'])
+@token_required
+def get_earnings(user_data):
+
+    response = Sales().get_earnings()
+
+    return make_response(jsonify(response), 200)

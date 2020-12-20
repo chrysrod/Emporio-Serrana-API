@@ -184,9 +184,9 @@ class Firestore:
         
         if self.get_sale(document):
             self.db.collection(collection).document(document).update(sale_data)
-            response = {'status': 200, 'message': 'Product successfully updated'}
+            response = {'status': 200, 'message': 'Sale successfully updated'}
         else:
-            response = {'status': 404, 'message': 'Product not founded on database'}
+            response = {'status': 404, 'message': 'Sale not founded on database'}
 
         return response
 
@@ -199,5 +199,14 @@ class Firestore:
             response = {'status': 200, 'message': 'Sale successfully deleted'}
         else:
             response = {'status': 404, 'message': 'Sale not founded on database'}
+
+        return response
+
+    def get_percentages(self):
+        collection = 'percentages'
+
+        docs = self.db.collection(collection).stream()
+
+        response = [doc.to_dict() for doc in docs]
 
         return response

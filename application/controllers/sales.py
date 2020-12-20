@@ -58,3 +58,31 @@ class Sales:
         response = self.database.delete_sale(sale_id)
 
         return response
+
+    def get_percentages(self):
+        
+        response = self.database.get_percentages()
+
+        return response
+
+    def get_earnings(self):
+
+        time_from = datetime.now() - timedelta(days=1)
+        time_till = datetime.now()
+        time_from_timestamp = datetime.timestamp(time_from)
+        time_till_timestamp = datetime.timestamp(time_till)
+
+        week_sales = self.get_all_week_sales()
+        last_three_sales = self.get_past_three_week_sales()
+
+        week = [sale['sales_amount'] for sale in week_sales]
+        last_three = [sale['sales_amount'] for sale in last_three_sales]
+        yesterday = self.database.get_week_sales_by_timestamp(time_from_timestamp, time_till_timestamp)[0]['sales_amount']
+
+        response = {
+            'week': sum(week),
+            'last_three_days': sum(last_three),
+            'yesterday': yesterday
+        }
+
+        return response
