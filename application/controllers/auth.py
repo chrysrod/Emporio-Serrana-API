@@ -1,13 +1,15 @@
+from base64 import b64encode, urlsafe_b64encode
 import datetime
 from jwt import encode as jwt_encode, decode as jwt_decode
-from application.models.database import Firestore
 
-from base64 import b64encode, urlsafe_b64encode
+from application.controllers.users import Users
+from application.models.database import Firestore
 
 class Auth:
 
     def __init__(self):
         self.secret = 'zn1xct1RFpGvuyXC3E9BreRjVl9x1GxQ'
+        self.users = Users()
         self.database = Firestore()
 
     def login(self, login_data):
@@ -15,10 +17,10 @@ class Auth:
         password_hash = login_data['password']
         exp = datetime.datetime.utcnow() + datetime.timedelta(days=7)
         
-        user_data = self.database.get_user_data(username)
+        password_hash_database = self.users.get_user_password_hash(username)
 
-        if user_data:
-            if password_hash == user_data['password_hash']:
+        if password_hash_database:
+            if password_hash == password_hash_database:
                 payload = {'username': username, 'sub': 'emporioserrana.com.br', 'exp': exp}
                 token = self.generate_token(payload)
                 res = {'status': 200, 'message':'Login successful', 'token': token}
@@ -35,6 +37,9 @@ class Auth:
         return token
 
     def verify_token(self, token):
-        data = jwt_decode(token, self.secret, algorithms='HS512')
+        try:
+            data = jwt_decode(token, self.secret, algorithms='HS512')
+        except Exception:
+            data = None
 
         return data
