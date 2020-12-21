@@ -35,6 +35,8 @@ class Users:
     
     def update_user(self, user_data):
 
+        user_data['password'] = sha512(user_data['password'].encode('utf-8')).hexdigest()
+
         response = self.database.update_user(user_data)
         
         return response
