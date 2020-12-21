@@ -56,11 +56,14 @@ class Sales:
     def get_last_five_sales(self):
 
         sales = self.database.get_all_sales()
+        sale1 = sales[-1]
+        sale2 = sales[-2]
+        sale3 = sales[-3]
         
         response = [
-            sales[-1],
-            sales[-2],
-            sales[-3]
+            sale1['sale'],
+            sale2['sale'],
+            sale3['sale']
         ]
 
         return response
