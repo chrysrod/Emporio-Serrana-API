@@ -74,6 +74,15 @@ def get_last_five_sales(user_data):
 
     return make_response(jsonify(response), 200)
 
+@sales_bp.route('/api/sales/get_sales_per_date', methods=['GET'])
+@token_required
+def get_sales_per_date(user_data):
+
+    date = request.args.get('date')
+    response = Sales().get_sales_per_date(date)
+
+    return make_response(jsonify(response), 200)
+
 @sales_bp.route('/api/sales/update_sale', methods=['PUT'])
 @token_required
 def update_sale(user_data):

@@ -65,6 +65,20 @@ class Sales:
 
         return response
 
+    def get_sales_per_date(self, date):
+
+        day = int(date.split('-')[2])
+        month = int(date.split('-')[1])
+        year = int(date.split('-')[0])
+        date_object_from = datetime(year, month, day) - timedelta(days=1)
+        date_object_till = datetime(year, month, day) + timedelta(days=1)
+        time_from_timestamp = datetime.timestamp(date_object_from)
+        time_till_timestamp = datetime.timestamp(date_object_till)
+
+        response = self.database.get_week_sales_by_timestamp(time_from_timestamp, time_till_timestamp)
+
+        return response
+
     def update_sale(self, sale_data):
 
         response = self.database.update_sale(sale_data)
