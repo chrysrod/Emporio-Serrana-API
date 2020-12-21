@@ -35,7 +35,7 @@ class Firestore:
 
         if user:
             for data in user:
-                if data != 'password_hash':
+                if data != 'password':
                     response[data] = user[data]
 
         return response
@@ -46,7 +46,7 @@ class Firestore:
 
         user_data = self.db.collection(collection).document(document).get().to_dict()
         
-        response = user_data['password_hash'] if 'password_hash' in user_data else None
+        response = user_data['password'] if 'password' in user_data else None
 
         return response
 
@@ -61,7 +61,7 @@ class Firestore:
         for user in users:
             user_data = {}
             for data in user:
-                if data != 'password_hash':
+                if data != 'password':
                     user_data[data] = user[data]
             response.append(user_data)
 

@@ -1,5 +1,6 @@
 from base64 import b64encode, urlsafe_b64encode
-import datetime
+from datetime import datetime, timedelta
+from hashlib import sha512
 from jwt import encode as jwt_encode, decode as jwt_decode
 
 from application.controllers.users import Users
@@ -14,9 +15,10 @@ class Auth:
 
     def login(self, login_data):
         username = login_data['username']
-        password_hash = login_data['password']
-        exp = datetime.datetime.utcnow() + datetime.timedelta(days=7)
-        
+        password = login_data['password']
+        password_hash = sha512(password.encode('utf-8')).hexdigest()
+        exp = datetime.utcnow() + timedelta(days=7)
+    
         password_hash_database = self.users.get_user_password_hash(username)
 
         if password_hash_database:

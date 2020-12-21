@@ -1,3 +1,5 @@
+from hashlib import sha512
+
 from application.models.database import Firestore
 
 class Users:
@@ -6,6 +8,8 @@ class Users:
         self.database = Firestore()
 
     def insert_user(self, user_data):
+        
+        user_data['password'] = sha512(user_data['password'].encode('utf-8')).hexdigest()
 
         response = self.database.insert_user(user_data)
         
