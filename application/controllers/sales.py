@@ -56,15 +56,22 @@ class Sales:
     def get_last_five_sales(self):
 
         sales = self.database.get_all_sales()
-        sale1 = sales[-1]
-        sale2 = sales[-2]
-        sale3 = sales[-3]
+
+        timestamp = []
+
+        for sale in sales:
+            timestamp.append(sale['timestamp'])
+
+        timestamp = sorted(timestamp)
+
+        for sale in sales:
+            if sale['timestamp'] == timestamp[-1]:
+                sale1 = sale
+
+        response = []
         
-        response = [
-            sale1['sale'],
-            sale2['sale'],
-            sale3['sale']
-        ]
+        for product in sale1['sale']:
+            response.append(product)
 
         return response
 
