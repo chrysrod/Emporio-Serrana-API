@@ -93,9 +93,8 @@ class Firestore:
 
     def insert_product(self, product_data):
         collection = 'products'
-        document = product_data['id']
         
-        product_ref = self.db.collection(collection).document(document)
+        product_ref = self.db.collection(collection).document()
         product_ref.set(product_data)
 
         response = {'status': 200, 'message': 'Product successfully inserted'}
@@ -106,7 +105,14 @@ class Firestore:
         collection = 'products'
         document = product_id
         
-        response = self.db.collection(collection).document(document).get().to_dict()
+        doc = self.db.collection(collection).document(document).get()
+
+        if not doc:
+            response = {'status': 404, 'message': 'Product not founded on database'}
+        else:
+            dict_doc = doc.to_dict()
+            dict_doc['id'] = doc.id
+            response = dict_doc
 
         return response
 
@@ -114,7 +120,13 @@ class Firestore:
         collection = 'products'
         
         docs = self.db.collection(collection).stream()
-        response = [doc.to_dict() for doc in docs]
+        
+        response = []
+        
+        for doc in docs:
+            dict_doc = doc.to_dict()
+            dict_doc['id'] = doc.id
+            response.append(dict_doc)
 
         return response
 
