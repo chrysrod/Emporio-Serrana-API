@@ -71,17 +71,18 @@ class Sales:
         time_till = datetime.now()
         time_from_timestamp = datetime.timestamp(time_from)
         time_till_timestamp = datetime.timestamp(time_till)
+        get_yesterday = self.database.get_week_sales_by_timestamp(time_from_timestamp, time_till_timestamp)
 
         week_sales = self.get_all_week_sales()
         last_three_sales = self.get_past_three_week_sales()
 
-        week = [sale['sales_amount'] for sale in week_sales]
-        last_three = [sale['sales_amount'] for sale in last_three_sales]
-        yesterday = self.database.get_week_sales_by_timestamp(time_from_timestamp, time_till_timestamp)[0]['sales_amount']
+        week = round(sum([sale['sales_amount'] for sale in week_sales]), 2)
+        last_three = round(sum([sale['sales_amount'] for sale in last_three_sales]), 2)
+        yesterday = get_yesterday[0]['sales_amount'] if get_yesterday else 0
 
         response = {
-            'week': sum(week),
-            'last_three_days': sum(last_three),
+            'week': week,
+            'last_three_days': last_three,
             'yesterday': yesterday
         }
 

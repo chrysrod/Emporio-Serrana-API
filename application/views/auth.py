@@ -30,11 +30,3 @@ def login():
     res = auth.login(req)
 
     return jsonify(res)
-
-@auth_bp.route('/api/auth/logout', methods=['POST'])
-@token_required
-def logout(user_data):
-
-    res = user_data
-
-    return jsonify(res)
