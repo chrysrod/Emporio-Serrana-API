@@ -1,13 +1,19 @@
 from datetime import datetime, timedelta
 
+from application.controllers.products import Products
 from application.models.database import Firestore
 
 class Sales:
 
     def __init__(self):
         self.database = Firestore()
+        self.products = Products()
 
     def insert_sale(self, sale_data):
+
+        for product in sale_data['sale']:
+            product['product']['stock'] = product['product']['stock'] - product['quantity']
+            self.products.update_product(product['product'])
 
         response = self.database.insert_sale(sale_data)
         
@@ -47,6 +53,18 @@ class Sales:
 
         return response
 
+    def get_last_five_sales(self):
+
+        sales = self.database.get_all_sales()
+        
+        response = [
+            sales[-1],
+            sales[-2],
+            sales[-3]
+        ]
+
+        return response
+
     def update_sale(self, sale_data):
 
         response = self.database.update_sale(sale_data)
@@ -54,8 +72,15 @@ class Sales:
         return response
 
     def delete_sale(self, sale_id):
+        
+        sale = self.get_sale(sale_id)
 
-        response = self.database.delete_sale(sale_id)
+        if sale:
+            for product in sale['sale']:
+                product['product']['stock'] = product['product']['stock'] + product['quantity']
+                self.products.update_product(product['product'])
+            
+            response = self.database.delete_sale(sale_id)
 
         return response
 

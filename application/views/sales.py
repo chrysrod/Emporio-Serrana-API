@@ -66,6 +66,14 @@ def get_past_three_week_sales(user_data):
 
     return make_response(jsonify(response), 200)
 
+@sales_bp.route('/api/sales/get_last_five_sales', methods=['GET'])
+@token_required
+def get_last_five_sales(user_data):
+
+    response = Sales().get_last_five_sales()
+
+    return make_response(jsonify(response), 200)
+
 @sales_bp.route('/api/sales/update_sale', methods=['PUT'])
 @token_required
 def update_sale(user_data):
